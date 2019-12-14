@@ -12,3 +12,32 @@ I need this code, just don't know where, perhaps should make some middleware, do
 
 Go code!
 */
+const express = require("express");
+
+const projectRouter = require("./Routes/Projects");
+
+const actionRouter = require("./Routes/Actions");
+
+const server = express();
+
+const PORT = process.env.PORT || 8080
+
+server.use(express.json());
+
+server.use("/projects", projectRouter);
+
+server.use("/actions", actionRouter);
+
+server.use((req,res) => {
+    res.status(404).json({message: "Page Not Found"})
+});
+
+server.use((err, req, res, next) => {
+    console.log(err);
+    res.status(500).json({message: "An Internal Error Occurred"})
+});
+
+server.listen(PORT, () => {
+    console.log(`\n *** Server up on port ${PORT}*** \n`)
+})
+
