@@ -20,7 +20,7 @@ const actionRouter = require("./Routes/Actions");
 
 const server = express();
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8080;
 
 server.use(express.json());
 
@@ -38,6 +38,6 @@ server.use((err, req, res, next) => {
 });
 
 server.listen(PORT, () => {
-    console.log(`\n *** Server up on port ${PORT}*** \n`)
-})
+    console.log(`\n *** Server up on port ${PORT} *** \n`)
+});
 
